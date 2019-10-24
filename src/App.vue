@@ -4,7 +4,7 @@
     <DiscordStats />
 
     <section>
-      <h3>Gods Unchained Player Stats</h3>
+      <h3>Player Stats</h3>
       <p>
         Total players:
         <small>coming soon...</small>
