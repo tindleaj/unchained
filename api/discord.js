@@ -1,6 +1,6 @@
 const https = require('https')
 
-let discordUrl = process.env.DISCORD_URL || 'https://discordapp.com/invite/godsunchained'
+let discordUrl = process.env.discord_url || 'https://discordapp.com/invite/godsunchained'
 console.log(process.env)
 
 module.exports = async (req, res) => {

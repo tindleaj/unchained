@@ -1,6 +1,5 @@
 {
   "env": {
-    "DATA_STORE_URL": "@data_store_url",
-    "DISCORD_URL": "@discord_url"
+    "discord_url": "@discord_url"
   }
 }
