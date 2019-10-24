@@ -3,7 +3,11 @@
     <h3>Discord Stats</h3>
     <p>
       Total members:
-      <strong>{{ memberCount || 'loading...'}}</strong>
+      <strong>{{ totalMembers || 'loading...'}}</strong>
+    </p>
+    <p>
+      Online now:
+      <strong>{{ onlineMembers || 'loading...'}}</strong>
     </p>
     <p>
       <span>Today:&nbsp;</span>
@@ -20,12 +24,14 @@ export default {
   props: {},
   mounted: function() {
     axios.get("/api/discord").then(res => {
-      this.memberCount = res.data.memberCount;
+      this.totalMembers = res.data.total_members;
+      this.onlineMembers = res.data.online_members;
     });
   },
   data: function() {
     return {
-      memberCount: null,
+      totalMembers: null,
+      onlineMembers: null,
       dailyNewMembers: 0
     };
   },
