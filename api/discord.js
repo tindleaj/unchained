@@ -4,12 +4,12 @@ let discordUrl =
   process.env.discord_url || 'https://discordapp.com/api/v6/invites/godsunchained?with_counts=true'
 
 module.exports = async (req, res) => {
-  const data = await getDiscordInviteData()
-  const json = JSON.parse(data)
+  const json = await getDiscordInviteData()
+  const data = JSON.parse(json)
 
   res.status(200).json({
-    total_members: discordData.approximate_member_count,
-    online_members: discordData.approximate_presence_count
+    total_members: data.approximate_member_count,
+    online_members: data.approximate_presence_count
   })
 }
 
