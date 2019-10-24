@@ -1,13 +1,16 @@
 <template>
-  <div>
-    <h3>Discord</h3>
-    <p>Total members: {{ memberCount || 'loading...'}}</p>
+  <section>
+    <h3>Discord Stats</h3>
+    <p>
+      Total members:
+      <strong>{{ memberCount || 'loading...'}}</strong>
+    </p>
     <p>
       <span>Today:&nbsp;</span>
       <span class="green">+{{ dailyNewMembers }} ({{ dailyNewMembersPercent }}%)</span>
       <small>&nbsp;coming soon...</small>
     </p>
-  </div>
+  </section>
 </template>
 
 <script>
