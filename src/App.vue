@@ -1,16 +1,17 @@
 <template>
   <div id="app">
-    <HelloWorld msg="Hello world" />
+    <h1>Gods Unchained Info</h1>
+    <DiscordStats />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import DiscordStats from "./components/DiscordStats.vue";
 
 export default {
   name: "app",
   components: {
-    HelloWorld
+    DiscordStats
   }
 };
 </script>
