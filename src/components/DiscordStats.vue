@@ -28,53 +28,6 @@ export default {
       this.onlineDiscordMembers = res.data.members_online;
       this.discordStatSnapshots = res.data.snapshots;
     });
-
-    this.discordStatSnapshots = [
-      { id: 0, members_total: 0, members_online: 0, created_at: 0 },
-      { id: 1, members_total: 15392, members_online: 0, created_at: 0 },
-      {
-        id: 2,
-        members_total: 15404,
-        members_online: 0,
-        created_at: 1572004800
-      },
-      {
-        id: 3,
-        members_total: 15454,
-        members_online: 1956,
-        created_at: 1571974738
-      },
-      {
-        members_total: 15459,
-        members_online: 1832,
-        id: 4,
-        created_at: 1571979471702
-      },
-      {
-        members_total: 15459,
-        members_online: 1832,
-        id: 5,
-        created_at: 1571979566425
-      },
-      {
-        members_total: 15459,
-        members_online: 1832,
-        id: 6,
-        created_at: 1571979584223
-      },
-      {
-        members_total: 15458,
-        members_online: 1801,
-        id: 7,
-        created_at: 1571980648449
-      },
-      {
-        members_total: 15458,
-        members_online: 1801,
-        id: 8,
-        created_at: 1571980666444
-      }
-    ];
   },
   data: function() {
     return {
