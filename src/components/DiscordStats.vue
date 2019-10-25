@@ -40,7 +40,10 @@ export default {
       return Date.now() - 1000 * 60 * 60 * 24;
     },
     dailyDiscordMembersAddedPercent: function() {
-      return (this.dailyDiscordMembersAdded / this.totalDiscordMembers) * 100;
+      return (
+        (this.dailyDiscordMembersAdded / this.totalDiscordMembers) *
+        100
+      ).toFixed(3);
     },
     dailyDiscordMembersAdded: function() {
       if (!this.discordStatSnapshots.length) return 0;

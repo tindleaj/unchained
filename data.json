@@ -1,30 +1,11 @@
 {
-  "collection_name": "discord_stats",
-  "updated_at": 1571974781,
+  "collection_name": "gu_stats",
+  "updated_at": 1571985407587,
   "snapshots": [
     {
       "id": 0,
-      "members_total": 0,
-      "members_online": 0,
-      "created_at": 0
-    },
-    {
-      "id": 1,
-      "members_total": 15392,
-      "members_online": 0,
-      "created_at": 0
-    },
-    {
-      "id": 2,
-      "members_total": 15404,
-      "members_online": 0,
-      "created_at": 1572004800
-    },
-    {
-      "id": 3,
-      "members_total": 15454,
-      "members_online": 1956,
-      "created_at": 1571974738
+      "players_total": 58597,
+      "created_at": 1571985407587
     }
   ]
 }
