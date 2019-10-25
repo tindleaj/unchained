@@ -41,13 +41,7 @@ export default {
       return Date.now() - 1000 * 60 * 60 * 24;
     },
     dailyDiscordMembersAddedPercent: function() {
-      return 0;
-      // if (!this.discordStatSnapshots.length) return 0;
-      // let yesterday = this.getYesterday();
-      // let yesterdaySnapshot = this.discordStatSnapshots.find(snapshot => {
-      //   return snapshot.created_at > yesterday;
-      // });
-      // return (yesterdaySnapshot.members_total / this.totalDiscordMembers) * 100;
+      return (this.dailyDiscordMembersAdded / this.totalDiscordMembers) * 100;
     },
     dailyDiscordMembersAdded: function() {
       if (!this.discordStatSnapshots.length) return 0;
