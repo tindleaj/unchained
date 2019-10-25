@@ -12,7 +12,6 @@
     <p>
       <span>Today:&nbsp;</span>
       <span class="green">+{{ dailyDiscordMembersAdded }} ({{ dailyDiscordMembersAddedPercent }}%)</span>
-      <small>&nbsp;coming soon...</small>
     </p>
   </section>
 </template>
