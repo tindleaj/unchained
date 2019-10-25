@@ -24,8 +24,8 @@ export default {
   props: {},
   mounted: function() {
     axios.get("/api/discord").then(res => {
-      this.totalMembers = res.data.total_members;
-      this.onlineMembers = res.data.online_members;
+      this.totalMembers = res.data.members_total;
+      this.onlineMembers = res.data.members_online;
     });
   },
   data: function() {
