@@ -3,7 +3,7 @@ const modelMap = require('./_models.json')
 
 const DISCORD_URL =
   process.env.discord_url || 'https://discordapp.com/api/v6/invites/godsunchained?with_counts=true'
-const MYJSON_URL = process.env.myjson_url || 'https://api.myjson.com/'
+const MYJSON_URL = process.env.myjson_url || 'https://api.myjson.com'
 const DISCORD_MODEL_ID = modelMap.discord_stats
 const UPDATE_INTERVAL = process.env.UPDATE_INTERVAL || 1000 * 60 * 30
 
@@ -80,4 +80,4 @@ function getGuildInfo() {
 // buildResponse().then(res => console.log(res))
 // getPersistentData().then(res => console.log(res))
 // addSnapshot({ members_total: 15459, members_online: 1832 }).then(res => console.log(res.snapshots))
-// getAndUpdateDiscordStats().then(res => console.log(res))
+// getAndUpdatePersistentData().then(res => console.log(res))
