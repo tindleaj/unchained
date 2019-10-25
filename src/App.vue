@@ -1,20 +1,8 @@
 <template>
   <div id="app">
     <h1>Gods Unchained Info</h1>
+    <PlayerStats />
     <DiscordStats />
-
-    <section>
-      <h3>Player Stats</h3>
-      <p>
-        Total players:
-        <small>coming soon...</small>
-      </p>
-      <p>
-        <span>Today:&nbsp;</span>
-        <span class="green">+{{ 0 }} ({{ 0 }}%)</span>
-        <small>&nbsp;coming soon...</small>
-      </p>
-    </section>
 
     <Donate betaKey="viMMXXXGTJ" ethAddress="0xD7D59474C7EbBF5Ef3Ed7dc0075D22CE4a16013d" />
   </div>
@@ -22,11 +10,13 @@
 
 <script>
 import DiscordStats from "./components/DiscordStats.vue";
+import PlayerStats from "./components/PlayerStats.vue";
 import Donate from "./components/Donate.vue";
 
 export default {
   name: "app",
   components: {
+    PlayerStats,
     DiscordStats,
     Donate
   }
