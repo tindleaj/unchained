@@ -6,7 +6,7 @@
       <strong>{{ totalPlayers || 'loading...'}}</strong>
     </p>
     <p>
-      <span>New players today:&nbsp;</span>
+      <span>New players since {{ }}:&nbsp;</span>
       <!-- <span class="green">+{{ 0 }} ({{ 0 }}%)</span> -->
       <small>&nbsp;coming soon...</small>
     </p>

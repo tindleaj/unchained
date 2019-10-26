@@ -10,7 +10,10 @@
       <strong>{{ onlineDiscordMembers || 'loading...'}}</strong>
     </p>
     <p>
-      <span>Today:&nbsp;</span>
+      <span>
+        New members since
+        <em>{{ this.pastSnapshotDate }}:</em>&nbsp;
+      </span>
       <span class="green">+{{ dailyDiscordMembersAdded }} ({{ dailyDiscordMembersAddedPercent }}%)</span>
     </p>
   </section>
@@ -32,6 +35,7 @@ export default {
     return {
       totalDiscordMembers: null,
       onlineDiscordMembers: null,
+      pastSnapshot: null,
       discordStatSnapshots: []
     };
   },
@@ -48,14 +52,26 @@ export default {
     dailyDiscordMembersAdded: function() {
       if (!this.discordStatSnapshots.length) return 0;
 
-      let yesterdaySnapshot = this.discordStatSnapshots
+      return this.totalDiscordMembers - this.pastSnapshot.members_total;
+    },
+    pastSnapshotDate: function() {
+      if (!this.pastSnapshot) return;
+
+      return new Date(this.pastSnapshot.created_at).toDateString();
+    }
+  },
+  watch: {
+    pastSnapshot: function() {
+      if (!this.discordStatSnapshots.length) return;
+
+      let pastSnapshot = this.discordStatSnapshots
         .slice(0)
         .reverse()
         .find(snapshot => {
           return snapshot.created_at < this.yesterday;
         });
 
-      return this.totalDiscordMembers - yesterdaySnapshot.members_total;
+      this.pastSnapshot = pastSnapshot;
     }
   },
   methods: {}

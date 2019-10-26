@@ -1,9 +1,9 @@
 const axios = require('axios')
 const modelMap = require('./_models.json')
+const { addSnapshot, getPersistentData } = require('./_myjson.js')
 
 const DISCORD_URL =
   process.env.discord_url || 'https://discordapp.com/api/v6/invites/godsunchained?with_counts=true'
-const MYJSON_URL = process.env.myjson_url || 'https://api.myjson.com'
 const DISCORD_MODEL_ID = modelMap.discord_stats
 const UPDATE_INTERVAL = process.env.UPDATE_INTERVAL || 1000 * 60 * 30
 
@@ -12,6 +12,7 @@ module.exports = async (req, res) => {
   res.status(200).json(data)
 }
 
+// TODO: DRY
 async function buildResponse() {
   const guildInfo = await getGuildInfo()
   const data = await getAndUpdatePersistentData()
@@ -24,49 +25,24 @@ async function buildResponse() {
 }
 
 async function getAndUpdatePersistentData() {
-  let data = await getPersistentData()
+  let data = await getPersistentData(DISCORD_MODEL_ID)
   let timeSinceLastUpdated = Date.now() - data.updated_at
 
   if (timeSinceLastUpdated > UPDATE_INTERVAL) {
     console.log('Updating stale data...')
     let currendDiscordData = await getGuildInfo()
 
-    return addSnapshot({
-      members_total: currendDiscordData.approximate_member_count,
-      members_online: currendDiscordData.approximate_presence_count
-    })
+    return addSnapshot(
+      {
+        members_total: currendDiscordData.approximate_member_count,
+        members_online: currendDiscordData.approximate_presence_count
+      },
+      DISCORD_MODEL_ID
+    )
   } else {
     console.log('Data is current.')
     return data
   }
-}
-
-async function addSnapshot(newSnapshot) {
-  let data = await getPersistentData()
-
-  let indexedSnapshot = {
-    ...newSnapshot,
-    id: data.snapshots[data.snapshots.length - 1].id + 1,
-    created_at: Date.now()
-  }
-
-  let payload = {
-    ...data,
-    updated_at: Date.now(),
-    snapshots: [...data.snapshots, indexedSnapshot]
-  }
-
-  return axios
-    .put(`${MYJSON_URL}/bins/${DISCORD_MODEL_ID}`, payload)
-    .then(res => res.data)
-    .catch(error => console.error(error))
-}
-
-function getPersistentData() {
-  return axios
-    .get(`${MYJSON_URL}/bins/${DISCORD_MODEL_ID}`)
-    .then(response => response.data)
-    .catch(error => console.error(error))
 }
 
 function getGuildInfo() {
@@ -76,6 +52,7 @@ function getGuildInfo() {
     .catch(error => console.error(error))
 }
 
+// Tests lol
 // getGuildInfo().then(res => console.log(res))
 // buildResponse().then(res => console.log(res))
 // getPersistentData().then(res => console.log(res))
