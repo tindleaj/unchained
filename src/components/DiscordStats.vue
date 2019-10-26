@@ -12,7 +12,7 @@
     <p>
       <span>
         New members since
-        <em>{{ this.pastSnapshotDate }}:</em>&nbsp;
+        <em>{{ pastSnapshotDate }}</em>:&nbsp;
       </span>
       <span class="green">+{{ dailyDiscordMembersAdded }} ({{ dailyDiscordMembersAddedPercent }}%)</span>
     </p>
@@ -35,7 +35,6 @@ export default {
     return {
       totalDiscordMembers: null,
       onlineDiscordMembers: null,
-      pastSnapshot: null,
       discordStatSnapshots: []
     };
   },
@@ -58,9 +57,7 @@ export default {
       if (!this.pastSnapshot) return;
 
       return new Date(this.pastSnapshot.created_at).toDateString();
-    }
-  },
-  watch: {
+    },
     pastSnapshot: function() {
       if (!this.discordStatSnapshots.length) return;
 
@@ -71,9 +68,10 @@ export default {
           return snapshot.created_at < this.yesterday;
         });
 
-      this.pastSnapshot = pastSnapshot;
+      return pastSnapshot;
     }
   },
+  watch: {},
   methods: {}
 };
 </script>

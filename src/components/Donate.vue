@@ -1,7 +1,11 @@
 <template>
   <footer>
-    <a :href="betaLink">Sign up with my beta key: {{ betaKey }}</a>
-    <p>Buy me some packs 😃: {{ ethAddress }}</p>
+    <small>
+      <a :href="betaLink">Sign up with my beta key: {{ betaKey }}</a>
+    </small>
+    <small>
+      <p>Buy me some packs 😃: {{ ethAddress }}</p>
+    </small>
   </footer>
 </template>
 

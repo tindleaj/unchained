@@ -12,7 +12,6 @@ module.exports = async (req, res) => {
   res.status(200).json(data)
 }
 
-// TODO: DRY
 async function buildResponse() {
   const guildInfo = await getGuildInfo()
   const data = await getAndUpdatePersistentData()
@@ -54,7 +53,7 @@ function getGuildInfo() {
 
 // Tests lol
 // getGuildInfo().then(res => console.log(res))
-// buildResponse().then(res => console.log(res))
+buildResponse().then(res => console.log(res))
 // getPersistentData().then(res => console.log(res))
 // addSnapshot({ members_total: 15459, members_online: 1832 }).then(res => console.log(res.snapshots))
 // getAndUpdatePersistentData().then(res => console.log(res))
