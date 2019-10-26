@@ -55,6 +55,7 @@ export default {
     },
     pastSnapshotDate: function() {
       if (!this.pastSnapshot) return;
+      console.log(this.pastSnapshotDate);
 
       return new Date(this.pastSnapshot.created_at).toDateString();
     },
